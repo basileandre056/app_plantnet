@@ -46,6 +46,8 @@ DEFAULT_DWC_CORE_FIELDS: List[str] = [
     "kingdom", "phylum", "class", "order", "family", "genus",
     "specificEpithet", "infraspecificEpithet",
     "datasetID", "datasetName", "license", "references"
+    "datasetID", "datasetName", "license", "references",
+    "associatedMedia"  #  Darwin Core officiel : liens vers images/sons/vidéos
 ]
 
 DEFAULT_BASIS_OF_RECORD_MAP: Dict[str, str] = {

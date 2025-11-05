@@ -10,5 +10,8 @@
   "scientificName", "scientificNameAuthorship", "taxonRank",
   "kingdom", "phylum", "class", "order", "family", "genus",
   "specificEpithet", "infraspecificEpithet",
-  "datasetID", "datasetName", "license", "references"
+  "datasetID", "datasetName", "license", "references",
+  "datasetID", "datasetName", "license", "references",
+  "associatedMedia"  
+  
 ]
