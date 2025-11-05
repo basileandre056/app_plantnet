@@ -1,0 +1,14 @@
+[
+  "occurrenceID", "basisOfRecord", "institutionCode", "collectionCode",
+  "catalogNumber", "recordNumber", "recordedBy",
+  "eventDate", "year", "month", "day",
+  "country", "countryCode", "stateProvince", "county", "municipality",
+  "locality", "decimalLatitude", "decimalLongitude", "coordinateUncertaintyInMeters",
+  "geodeticDatum",
+  "occurrenceStatus", "individualCount", "sex", "lifeStage",
+  "identifiedBy", "dateIdentified",
+  "scientificName", "scientificNameAuthorship", "taxonRank",
+  "kingdom", "phylum", "class", "order", "family", "genus",
+  "specificEpithet", "infraspecificEpithet",
+  "datasetID", "datasetName", "license", "references"
+]

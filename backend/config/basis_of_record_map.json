@@ -1,0 +1,12 @@
+{
+  "human_observation": "HUMAN_OBSERVATION",
+  "observation": "OBSERVATION",
+  "machine_observation": "MACHINE_OBSERVATION",
+  "preserved_specimen": "PRESERVED_SPECIMEN",
+  "living_specimen": "LIVING_SPECIMEN",
+  "material_sample": "MATERIAL_SAMPLE",
+
+  "photograph": "HUMAN_OBSERVATION",
+  "photo": "HUMAN_OBSERVATION",
+  "image": "MACHINE_OBSERVATION"
+}

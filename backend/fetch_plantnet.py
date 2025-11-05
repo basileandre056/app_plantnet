@@ -1,20 +1,27 @@
 #!/usr/bin/env python3
-"""
-Client Python *très* minimal pour exécuter la requête souhaitée ET stocker le résultat.
-- Emprise géographique = polygone de La Réunion (fourni ci-dessous)
-- Espèces ciblées = liste fournie ci-dessous
-- Écrit la réponse telle quelle dans un fichier JSON (le plus simple)
+# -*- coding: utf-8 -*-
 
-Tout est codé en dur : base_url, api_key, coordonnées, espèces, chemin du fichier.
 """
-import json
-import requests
+fetch_plantnet.py
+- Envoie UNE requête à l'API Pl@ntNet (endpoint Darwin Core "occurrence/search").
+- Sauvegarde la réponse BRUTE en JSON (pour audit/rejeu).
+- Ne fait PAS de normalisation ici (on garde ça pour le 2e script).
+"""
+
 import os
+import json
+from pathlib import Path
+import requests  # pip install requests
 
-# --- Paramètres codés en dur -------------------------------------------------
+# --- Paramètres codés en dur (tu les rendras paramétrables plus tard) -------------------
+
 BASE_URL = "https://my-api.plantnet.org/v3/dwc/occurrence/search"
-API_KEY  = "2b10IJGxpcJr54FjXELjEVJI1O"  # fourni par l'utilisateur
-OUTPUT_JSON = os.path.expanduser("~/projets/plantnet/app_plantnet/plantnet_occurrences_reunion.json")
+API_KEY  = "2b10IJGxpcJr54FjXELjEVJI1O"  
+
+OUTPUT_DIR  = Path(os.path.expanduser("~/projets/app_plantnet"))
+RAW_JSON    = OUTPUT_DIR / "memory/plantnet_raw_reunion.json"   # JSON brut écrasé à chaque run
+
+# Exemple simple : 4 taxons et polygone de La Réunion (WGS84)
 SPECIES = [
     "Thunbergia fragrans Roxb.",
     "Aciotis purpurascens (Aubl.) Triana",
@@ -22,7 +29,6 @@ SPECIES = [
     "Machaerina iridifolia (Bory) T.Koyama",
 ]
 
-# Polygone de l'île de La Réunion (tel que fourni dans l'exemple cURL)
 REUNION_POLYGON = {
     "type": "Polygon",
     "coordinates": [[
@@ -61,35 +67,28 @@ REUNION_POLYGON = {
     ]]
 }
 
-# Corps de requête minimal (identique à l'exemple cURL)
-PAYLOAD = {
-    "scientificName": SPECIES,
-    "geometry": REUNION_POLYGON,
-}
 
-# -----------------------------------------------------------------------------
-if __name__ == "__main__":
+PAYLOAD = {"scientificName": SPECIES, "geometry": REUNION_POLYGON}
+
+
+def main():
+    # 1) Crée le dossier de sortie si besoin
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+    # 2) Construit l'URL avec la clé d'API (simple et clair)
     url = f"{BASE_URL}?api-key={API_KEY}"
     headers = {"Content-Type": "application/json"}
 
-    print("→ Envoi de la requête à l'API Pl@ntNet…")
+    print("→ Appel Pl@ntNet (occurrence/search)…")
     resp = requests.post(url, headers=headers, json=PAYLOAD, timeout=(10, 90))
-    resp.raise_for_status()
-
+    resp.raise_for_status()  # lève une erreur si 4xx/5xx
     data = resp.json()
 
-    # 1) Affiche joliment la réponse dans le terminal
-    print(json.dumps(data, indent=2, ensure_ascii=False))
-
-    # 2) Stocke la réponse brute telle quelle dans un JSON (le plus simple)
-    with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
+    # 3) Sauvegarde la réponse brute telle quelle (UTF-8)
+    with open(RAW_JSON, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
-    print(f"\n✓ Résultat écrit dans {OUTPUT_JSON}")
 
-    # (Optionnel) afficher le nombre d'occurrences si une liste est trouvée
-    if isinstance(data, dict):
-        for k in ("data", "results", "items", "records", "occurrences"):
-            v = data.get(k)
-            if isinstance(v, list):
-                print(f"★ Nombre d'occurrences retournées ({k}) : {len(v)}")
-                break
+    print(f"✓ JSON brut enregistré : {RAW_JSON}")
+
+if __name__ == "__main__":
+    main()
