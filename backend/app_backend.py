@@ -69,12 +69,17 @@ REUNION_POLYGON = {
     ]]
 }
 
+
+
 def main():
     # 1) Extraction JSON brut
     fetch_plantnet(
+
         api_key=API_KEY,
         species=SPECIES,
         polygon_geojson=REUNION_POLYGON,
+        min_event_date="2023-01-01",
+        max_event_date="2024-12-31",
         output_json_path=RAW_JSON,
     )
 
