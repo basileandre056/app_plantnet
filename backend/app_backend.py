@@ -9,7 +9,7 @@ app_backend.py
 
 import os
 from pathlib import Path
-
+import argparse
 from fetch_plantnet import fetch_plantnet
 from dwc_normalize_to_csv import dwc_normalise_to_csv
 
@@ -68,27 +68,57 @@ REUNION_POLYGON = {
         [55.2793527748355, -20.915228550665972]
     ]]
 }
-
+def parse_args():
+    parser = argparse.ArgumentParser(description="Pl@ntNet fetcher")
+    parser.add_argument("--bbox", type=str, help="bbox W/E/S/N : minLon,minLat,maxLon,maxLat")
+    parser.add_argument("--after", type=str, help="date min (YYYY-MM-DD)")
+    parser.add_argument("--before", type=str, help="date max (YYYY-MM-DD)")
+    parser.add_argument("--taxon", type=str, nargs="*", help="Liste d'espèces")
+    return parser.parse_args()
 
 
 def main():
-    # 1) Extraction JSON brut
-    fetch_plantnet(
+    args = parse_args()
 
+    # 1) Détermination du polygone
+    if args.bbox:
+        print("→ Utilisation de la bbox :", args.bbox)
+        lon1, lat1, lon2, lat2 = map(float, args.bbox.split(","))
+        polygon = {
+            "type": "Polygon",
+            "coordinates": [[
+                [lon1, lat1],
+                [lon2, lat1],
+                [lon2, lat2],
+                [lon1, lat2],
+                [lon1, lat1]
+            ]]
+        }
+    else:
+        polygon = REUNION_POLYGON
+
+    # 2) Détermination du filtre species
+    species = args.taxon if args.taxon else SPECIES
+
+    # 3) Dates
+    min_d = args.after if args.after else "2023-01-01"
+    max_d = args.before if args.before else "2024-12-31"
+
+    fetch_plantnet(
         api_key=API_KEY,
-        species=SPECIES,
-        polygon_geojson=REUNION_POLYGON,
-        min_event_date="2023-01-01",
-        max_event_date="2024-12-31",
+        species=species,
+        polygon_geojson=polygon,
+        min_event_date=min_d,
+        max_event_date=max_d,
         output_json_path=RAW_JSON,
     )
 
-    # 2) Normalisation + export CSV (UTF-8, DwC/GBIF)
     dwc_normalise_to_csv(
         raw_json_path=RAW_JSON,
         out_csv_path=OUT_CSV,
         config_dir=CONFIG_DIR,  
     )
+
 
 if __name__ == "__main__":
     main()
