@@ -3,9 +3,29 @@
 
 """
 app_backend.py
-- Définit les variables (pour l’instant en dur)
-- Appelle fetch_plantnet(...) puis dwc_normalise_to_csv(...)
+
+Rôle
+----
+Point d’entrée du backend Pl@ntNet.
+
+Responsabilités
+---------------
+- Lire les arguments CLI (bbox, taxon, dates).
+- Construire dynamiquement les filtres de requête : espèce, géométrie, période.
+- Appeler fetch_plantnet() pour interroger l’API Pl@ntNet et enregistrer le JSON brut.
+- Appeler dwc_normalise_to_csv() pour produire un CSV Darwin Core normalisé.
+
+Ce script n’implémente aucune logique d’extraction ou de normalisation :
+il orchestre uniquement la chaîne complète :
+    API → JSON brut → CSV Darwin Core.
+
+Fichiers produits
+-----------------
+- memory/plantnet_raw_*.json : réponse brute Pl@ntNet
+- memory/plantnet_occurrences_*.csv : export DwC normalisé
 """
+
+
 
 import os
 from pathlib import Path

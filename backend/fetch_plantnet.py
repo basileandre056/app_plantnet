@@ -1,3 +1,39 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+fetch_plantnet.py
+
+Rôle
+----
+Fournit la fonction fetch_plantnet(), responsable de l’appel à l’API Pl@ntNet.
+
+Fonctionnalités
+---------------
+- Envoie une requête POST (form-data) vers l’API Pl@ntNet v3.
+- Gère :
+    * les filtres taxonomiques (scientificName[])
+    * un polygone GeoJSON (geometry) converti en chaîne JSON
+    * des bornes temporelles (minEventDate / maxEventDate)
+- Ne gère pas la pagination (l’API renvoie toutes les occurrences correspondant aux critères).
+
+Paramètres importants
+---------------------
+api_key : clé API Pl@ntNet.
+species : liste de noms scientifiques (champ répété en form-data).
+polygon_geojson : polygone GeoJSON dict → sérialisé en JSON.
+min_event_date / max_event_date : bornes temporelles ISO.
+output_json_path : fichier où écrire la réponse JSON brute.
+
+Sortie
+------
+Un fichier JSON UTF-8 contenant la réponse brute Pl@ntNet, sans transformation.
+
+Ce module ne fait aucune normalisation Darwin Core : il se limite à l’extraction.
+"""
+
+
+
 import os
 import json
 from pathlib import Path

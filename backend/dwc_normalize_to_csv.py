@@ -2,27 +2,39 @@
 # -*- coding: utf-8 -*-
 
 """
-dwc_normalize_to_csv.py (hybride)
+dwc_normalize_to_csv.py
 
-But
+Rôle
 ----
-- Lire le JSON brut extrait de Pl@ntNet (ex: `plantnet_raw_reunion.json`)
-- Charger dynamiquement 2 configurations si elles existent :
-    * `config/dwc_core_fields.json` (liste des colonnes Darwin Core à exporter)
-    * `config/basis_of_record_map.json` (mappage souple → vocabulaire GBIF)
-  Sinon, tomber proprement sur des valeurs par défaut.
-- Normaliser les enregistrements "occurrence" au format Darwin Core (Occurrence core),
-  avec des choix compatibles GBIF (dates ISO-8601, WGS84, basisOfRecord contrôlé,
-  occurrenceID stable si absent, etc.).
-- Exporter un CSV UTF-8 (sans BOM) : colonnes cœur DwC + colonnes "extra" en fin.
+Transformer la réponse brute Pl@ntNet (JSON) en CSV conforme au standard Darwin Core,
+avec des valeurs normalisées compatibles GBIF.
 
-Remarques
----------
-- Le script ne dépend pas d’une version précise de Pl@ntNet, il cherche la liste d’occurrences
-  de manière robuste (plusieurs clés possibles).
-- Les fonctions sont volontairement pures/simples pour pouvoir être réutilisées
-  dans d’autres pipelines (CLI, API, notebook).
+Pipeline
+--------
+1. Charger le JSON brut exporté par fetch_plantnet().
+2. Extraire la liste des occurrences (schéma flexible).
+3. Charger deux configurations optionnelles :
+       - dwc_core_fields.json : liste ordonnée des colonnes Darwin Core à exporter.
+       - basis_of_record_map.json : mappage souple → vocabulaires GBIF.
+   Si absents, utiliser des valeurs par défaut robustes.
+4. Pour chaque occurrence :
+       - normalisation taxonomique
+       - normalisation des coordonnées (WGS84)
+       - conversion des dates en ISO-8601
+       - mappage basisOfRecord vers GBIF
+       - génération d’un occurrenceID stable
+5. Export final en CSV UTF-8 : colonnes cœur DwC + colonnes « extra ».
+
+Points clés
+-----------
+- Tolérant aux variations de structure JSON Pl@ntNet.
+- Compatible GBIF (formats, vocabulaires, identifiants stables).
+- Aucun écrasement des données brutes : les champs inconnus sont gardés comme « extras ».
+- Le CSV est prêt pour ingestion dans GeoNature, GBIF ou un SIG.
+
+Ce module n’interroge jamais l’API : il ne fait que la normalisation / export.
 """
+
 
 import os
 import json
