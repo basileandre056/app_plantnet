@@ -242,40 +242,27 @@
       "geolocationAccuracy": null
     },
     {
-      "id": "1020446511",
-      "eventDate": "2023-11-11T08:31:05.494Z",
-      "observedOn": "2023-11-11T08:31:05.494Z",
-      "scientificName": "Thunbergia fragrans Roxb.",
+      "id": "1020998273",
+      "eventDate": "2024-02-24T19:30:53.610Z",
+      "observedOn": "2023-11-13T11:00:03.000Z",
+      "scientificName": "Machaerina iridifolia (Bory) T.Koyama",
       "ownerInstitutionCodeProperty": "Pl@ntNet",
       "identificationVerificationStatus": "research",
       "basisOfRecord": "LIVING_SPECIMEN",
       "type": "StillImage",
       "accessRight": "",
       "license": "CC-BY-SA",
-      "rightsHolder": "Soazig Fleurs",
+      "rightsHolder": "Léa Mariton",
       "taxon": {
-        "id": 5415458,
+        "id": 5291141,
         "rank": "species",
         "rank_level": 10,
         "kingdom": "Plantae",
-        "family": "Acanthaceae",
-        "name": "Thunbergia fragrans Roxb.",
-        "url": "https://identify.plantnet.org/fr/k-world-flora/species/Thunbergia%20fragrans%20Roxb./data",
+        "family": "Cyperaceae",
+        "name": "Machaerina iridifolia (Bory) T.Koyama",
+        "url": "https://identify.plantnet.org/fr/k-western-indian-ocean/species/Machaerina%20iridifolia%20(Bory)%20T.Koyama/data",
         "common_names": {
-          "en": [
-            "White thunbergia",
-            "White-lady",
-            "White-nightshade",
-            "Chimine",
-            "Indrapushpam",
-            "Noorvan-valli",
-            "Susana blanca",
-            "碗花草",
-            "Angel wings",
-            "Fragrant thunbergia",
-            "Sweet clockvine",
-            "White clockvine"
-          ]
+          "en": []
         }
       },
       "occurrenceStatus": "PRESENT",
@@ -283,56 +270,52 @@
         {
           "type": "StillImage",
           "format": "image/jpeg",
-          "identifier": "7c2769c511c089ca38c019940b5c4b24e9d4a311",
-          "medium_url": "https://bs.plantnet.org/image/m/7c2769c511c089ca38c019940b5c4b24e9d4a311",
-          "large_url": "https://bs.plantnet.org/image/o/7c2769c511c089ca38c019940b5c4b24e9d4a311",
+          "identifier": "d9e14633dffb0c47bce25066d046da63efb72f29",
+          "medium_url": "https://bs.plantnet.org/image/m/d9e14633dffb0c47bce25066d046da63efb72f29",
+          "large_url": "https://bs.plantnet.org/image/o/d9e14633dffb0c47bce25066d046da63efb72f29",
           "organ": "flower"
         }
       ],
       "user": {
-        "id": "101812566"
+        "id": "101114039"
       },
       "identifications": [],
       "votes": [
         {
-          "determination": "Thunbergia fragrans Roxb.",
-          "count": 2,
-          "score": 126.51
+          "determination": "Machaerina iridifolia (Bory) T.Koyama",
+          "count": 1,
+          "score": 17.45
         }
       ],
       "comments": [],
-      "decimalLatitude": -20.9170645643,
-      "decimalLongitude": 55.6222106878,
+      "decimalLatitude": -21.200724,
+      "decimalLongitude": 55.366434,
       "privateGeolocation": true,
-      "elevation": 10.8713,
-      "geolocationAccuracy": 56
+      "elevation": 1206,
+      "geolocationAccuracy": null
     },
     {
-      "id": "1019829252",
-      "eventDate": "2023-09-05T16:50:13.714Z",
-      "observedOn": "2023-09-05T14:19:19.000Z",
-      "scientificName": "Iris japonica Thunb.",
+      "id": "1020998232",
+      "eventDate": "2024-02-24T19:22:18.541Z",
+      "observedOn": "2023-11-13T11:16:46.000Z",
+      "scientificName": "Machaerina iridifolia (Bory) T.Koyama",
       "ownerInstitutionCodeProperty": "Pl@ntNet",
       "identificationVerificationStatus": "research",
       "basisOfRecord": "LIVING_SPECIMEN",
       "type": "StillImage",
       "accessRight": "",
       "license": "CC-BY-SA",
-      "rightsHolder": "Flore Gaulmier",
+      "rightsHolder": "Léa Mariton",
       "taxon": {
-        "id": 5297939,
+        "id": 5291141,
         "rank": "species",
         "rank_level": 10,
         "kingdom": "Plantae",
-        "family": "Iridaceae",
-        "name": "Iris japonica Thunb.",
-        "url": "https://identify.plantnet.org/fr/k-western-indian-ocean/species/Iris%20japonica%20Thunb./data",
+        "family": "Cyperaceae",
+        "name": "Machaerina iridifolia (Bory) T.Koyama",
+        "url": "https://identify.plantnet.org/fr/k-western-indian-ocean/species/Machaerina%20iridifolia%20(Bory)%20T.Koyama/data",
         "common_names": {
-          "en": [
-            "Butterfly-flower",
-            "Fringed iris",
-            "Japanese crested iris"
-          ]
+          "en": []
         }
       },
       "occurrenceStatus": "PRESENT",
@@ -340,94 +323,45 @@
         {
           "type": "StillImage",
           "format": "image/jpeg",
-          "identifier": "deb97959456f25d59a245e96bf5231a1f0b225fe",
-          "medium_url": "https://bs.plantnet.org/image/m/deb97959456f25d59a245e96bf5231a1f0b225fe",
-          "large_url": "https://bs.plantnet.org/image/o/deb97959456f25d59a245e96bf5231a1f0b225fe",
-          "organ": "flower"
+          "identifier": "46a5caf91e49081daa9ef1c8bb7ba001d4d6cc92",
+          "medium_url": "https://bs.plantnet.org/image/m/46a5caf91e49081daa9ef1c8bb7ba001d4d6cc92",
+          "large_url": "https://bs.plantnet.org/image/o/46a5caf91e49081daa9ef1c8bb7ba001d4d6cc92",
+          "organ": "leaf"
         },
         {
           "type": "StillImage",
           "format": "image/jpeg",
-          "identifier": "82cddc19df1962fa0d17452c03d4e869ba20eac5",
-          "medium_url": "https://bs.plantnet.org/image/m/82cddc19df1962fa0d17452c03d4e869ba20eac5",
-          "large_url": "https://bs.plantnet.org/image/o/82cddc19df1962fa0d17452c03d4e869ba20eac5",
-          "organ": "flower"
-        }
-      ],
-      "user": {
-        "id": "103890245"
-      },
-      "identifications": [],
-      "votes": [
-        {
-          "determination": "Iris japonica Thunb.",
-          "count": 2,
-          "score": 47.83
-        }
-      ],
-      "comments": [],
-      "decimalLatitude": -21.132566444444446,
-      "decimalLongitude": 55.47240827777778,
-      "privateGeolocation": true,
-      "elevation": 1211,
-      "geolocationAccuracy": null
-    },
-    {
-      "id": "1019497484",
-      "eventDate": "2023-08-13T07:08:31.010Z",
-      "observedOn": "2023-08-13T07:08:31.010Z",
-      "scientificName": "Iris japonica Thunb.",
-      "ownerInstitutionCodeProperty": "Pl@ntNet",
-      "identificationVerificationStatus": "casual",
-      "basisOfRecord": "LIVING_SPECIMEN",
-      "type": "StillImage",
-      "accessRight": "",
-      "license": "CC-BY-SA",
-      "rightsHolder": "Stéphane BARBIERI",
-      "taxon": {
-        "id": 5297939,
-        "rank": "species",
-        "rank_level": 10,
-        "kingdom": "Plantae",
-        "family": "Iridaceae",
-        "name": "Iris japonica Thunb.",
-        "url": "https://identify.plantnet.org/fr/k-western-indian-ocean/species/Iris%20japonica%20Thunb./data",
-        "common_names": {
-          "en": [
-            "Butterfly-flower",
-            "Fringed iris",
-            "Japanese crested iris"
-          ]
-        }
-      },
-      "occurrenceStatus": "PRESENT",
-      "media": [
+          "identifier": "1da51f1312ec479af9f0eaf957157693cd7da109",
+          "medium_url": "https://bs.plantnet.org/image/m/1da51f1312ec479af9f0eaf957157693cd7da109",
+          "large_url": "https://bs.plantnet.org/image/o/1da51f1312ec479af9f0eaf957157693cd7da109",
+          "organ": "leaf"
+        },
         {
           "type": "StillImage",
           "format": "image/jpeg",
-          "identifier": "81e60f9b5e62967d08be73881bb8cd4582352877",
-          "medium_url": "https://bs.plantnet.org/image/m/81e60f9b5e62967d08be73881bb8cd4582352877",
-          "large_url": "https://bs.plantnet.org/image/o/81e60f9b5e62967d08be73881bb8cd4582352877",
-          "organ": "flower"
+          "identifier": "b04d9817e9545433f0d62be8031d77e4576bcafe",
+          "medium_url": "https://bs.plantnet.org/image/m/b04d9817e9545433f0d62be8031d77e4576bcafe",
+          "large_url": "https://bs.plantnet.org/image/o/b04d9817e9545433f0d62be8031d77e4576bcafe",
+          "organ": "habit"
         }
       ],
       "user": {
-        "id": "106448312"
+        "id": "101114039"
       },
       "identifications": [],
       "votes": [
         {
-          "determination": "Iris japonica Thunb.",
-          "count": 2,
-          "score": 1.97
+          "determination": "Machaerina iridifolia (Bory) T.Koyama",
+          "count": 1,
+          "score": 17.45
         }
       ],
       "comments": [],
-      "decimalLatitude": -21.1313964,
-      "decimalLongitude": 55.4712049,
+      "decimalLatitude": -21.200724,
+      "decimalLongitude": 55.366434,
       "privateGeolocation": true,
-      "elevation": 1177.7164,
-      "geolocationAccuracy": 10.1491346359
+      "elevation": 1206,
+      "geolocationAccuracy": null
     }
   ]
 }
