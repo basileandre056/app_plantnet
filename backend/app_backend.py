@@ -37,7 +37,7 @@ from dwc_normalize_to_csv import dwc_normalise_to_csv
 
 API_KEY = "2b10IJGxpcJr54FjXELjEVJI1O"  #en variable d'environnement plus tard
 
-BASE_DIR   = Path(os.path.expanduser("~/projets/app_plantnet/backend"))
+BASE_DIR   = Path(os.path.expanduser("~/projets/plantnet/app_plantnet/backend"))
 MEM_DIR    = BASE_DIR / "memory"
 CONFIG_DIR = BASE_DIR / "config"
 
@@ -97,10 +97,21 @@ def parse_args():
     return parser.parse_args()
 
 
+def sanitize_filename(s: str) -> str:
+    """Enlève caracteres interdits et remplace espaces/ponctuation."""
+    return (
+        s.replace(" ", "_")
+         .replace(",", "_")
+         .replace("(", "")
+         .replace(")", "")
+         .replace(".", "")
+         .replace("/", "_")
+    )
+
 def main():
     args = parse_args()
 
-    # 1) Détermination du polygone
+    # 1) Polygone
     if args.bbox:
         print("→ Utilisation de la bbox :", args.bbox)
         lon1, lat1, lon2, lat2 = map(float, args.bbox.split(","))
@@ -117,13 +128,35 @@ def main():
     else:
         polygon = REUNION_POLYGON
 
-    # 2) Détermination du filtre species
+    # 2) Taxons
     species = args.taxon if args.taxon else SPECIES
+    taxon_suffix = "-".join(sanitize_filename(s) for s in species)
 
     # 3) Dates
-    min_d = args.after if args.after else "2023-01-01"
-    max_d = args.before if args.before else "2024-12-31"
+    # Valeurs par défaut si rien n'est donné : None
+    min_d = args.after if args.after else None
+    max_d = args.before if args.before else None
 
+    # Construction du suffixe de fichier
+    if min_d and max_d:
+        date_suffix = f"{min_d}_to_{max_d}"
+    elif min_d and not max_d:
+        date_suffix = f"from_{min_d}"
+    elif max_d and not min_d:
+        date_suffix = f"until_{max_d}"
+    else:
+        date_suffix = "no_dates"
+
+
+    # 4) Fichiers dynamiques
+    RAW_JSON = MEM_DIR / f"plantnet_raw_{taxon_suffix}_{date_suffix}.json"
+    OUT_CSV  = MEM_DIR / f"plantnet_occ_{taxon_suffix}_{date_suffix}.csv"
+
+    print("→ Fichiers générés :")
+    print("  JSON :", RAW_JSON)
+    print("  CSV  :", OUT_CSV)
+
+    # 5) Appels
     fetch_plantnet(
         api_key=API_KEY,
         species=species,
@@ -138,7 +171,6 @@ def main():
         out_csv_path=OUT_CSV,
         config_dir=CONFIG_DIR,  
     )
-
 
 if __name__ == "__main__":
     main()
